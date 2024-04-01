@@ -14,8 +14,6 @@ const registerImage = "/backgrounds/signup-1.jpg"
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
-  // const [isError, setIsError] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
 
   const { isLoading, isError } = useSelector((state) => state.user); // Slice name is "user" in userSlice.js
 
@@ -70,9 +68,9 @@ export default function SignUp() {
       {/* Header */}
       <Header isShowHome={true} isShowSignIn={true} />
       <div p-3 className='text-black max-w-lg mx-auto'>
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-6">
           <h1 className="text-3xl text-center font-semibold my-7">Sign Up</h1>
-          <img className="self-center" src={registerImage} alt="Register Image" style={{ maxWidth: '70%', height: 'auto' }} />
+          <img className="self-center" src={registerImage} alt="Register Image" style={{ maxWidth: '100%', height: 'auto' }} />
         </div>
         <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
           <input
