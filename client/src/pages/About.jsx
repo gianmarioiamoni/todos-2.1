@@ -10,8 +10,8 @@ export default function About() {
         isShowDashboard={true}
       />
       <div className='px-4, py-12 max-w-2xl mx-auto'>
-        <h1 className='text-3xl font-bold mb-4 text-slate-800'>About MERN Auth App</h1>
-        <p className='mb-4 text-slate-700'>
+        <h1 className='text-3xl font-bold mb-4 text-title'>About MERN Auth App</h1>
+        <p className='mb-4 text-text'>
           This is an example of authentication App using MERN (MongoDB, Express.js, React, Node.js) stack. It includes authentication features that allow uswer to sign up, login and logout and provides access to protected routes only for authenticated users.
         </p>
       </div>

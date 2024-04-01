@@ -20,12 +20,12 @@ export default function NotFoundPage() {
             {/* Header */}
             <Header isShowHome={true} />
             <div style={containerStyle}>
-                <h1 className='text-3xl font-bold mb-4 text-slate-800'>Page Not Found</h1>
-                <p className='mb-4 text-slate-700'>
+                <h1 className='text-3xl font-bold mb-4 text-title'>Page Not Found</h1>
+                <p className='mb-4 text-text'>
                     The page you are looking for might have been removed or is temporarily unavailable.
                 </p>
                 <button
-                    className='bg-slate-600 text-slate-300 p-3 rounded-lg uppercase hover:opacity-75 disabled:opacity-50 mt-16'
+                    className='bg-primary text-secondary p-3 rounded-lg uppercase hover:opacity-75 disabled:opacity-50 mt-16'
                     type='button'
                     onClick={() => navigate("/")}
                 >

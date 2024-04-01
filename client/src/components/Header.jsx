@@ -21,7 +21,7 @@ export default function Header({
 
 
     return (
-        <div className='bg-slate-600 text-slate-300'>
+        <div className='bg-primary text-secondary text-0'>
             <div className="flex justify-between items-center max-w-6xl p-3 mx-auto">
                 <Link to="/">
                     <h1 className="font-bold ">MERN Auth</h1>

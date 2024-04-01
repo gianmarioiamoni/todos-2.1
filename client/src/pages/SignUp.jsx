@@ -20,7 +20,7 @@ export default function SignUp() {
   const { isLoading, isError } = useSelector((state) => state.user); // Slice name is "user" in userSlice.js
 
   const navigate = useNavigate();
-  
+
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -66,7 +66,7 @@ export default function SignUp() {
   }
 
   return (
-  <>
+    <>
       {/* Header */}
       <Header isShowHome={true} isShowSignIn={true} />
       <div p-3 className='text-black max-w-lg mx-auto'>
@@ -80,7 +80,7 @@ export default function SignUp() {
             placeholder='Username'
             id='username'
             style={{ padding: "3" }}
-            className='bg-slate-100 border-slate-300 border-2 p-3 rounded-lg'
+            className='bg-input-bg border-border border-2 p-3 rounded-lg'
             onChange={handleChange}
           ></input>
           <input
@@ -88,7 +88,7 @@ export default function SignUp() {
             placeholder='Email'
             id='email'
             style={{ padding: "3" }}
-            className='bg-slate-100 border-slate-300 border-2 p-3 rounded-lg'
+            className='bg-input-bg border-border border-2 p-3 rounded-lg'
             onChange={handleChange}
           ></input>
           <input
@@ -96,26 +96,26 @@ export default function SignUp() {
             placeholder='Password'
             id='password'
             style={{ padding: "3" }}
-            className='bg-slate-100 border-slate-300 border-2 p-3 rounded-lg'
+            className='bg-input-bg border-border border-2 p-3 rounded-lg'
             onChange={handleChange}
           ></input>
           <button
             disabled={isLoading}
-            className='bg-slate-600 text-slate-300 p-3 rounded-lg uppercase hover:opacity-75 disabled:opacity-50'
+            className='bg-primary text-secondary p-3 rounded-lg uppercase hover:opacity-75 disabled:opacity-50'
           >
             {isLoading ? "Loading..." : "Sign Up"}
-        </button>
-        <OAuth/>
-      </form>
-      <div className="flex gap-2 mt-5">
-        <p>Have an account? </p>
-        <Link to="/sign-in">
-          <span className='text-blue-500'>Sign In</span>
-        </Link>
+          </button>
+          <OAuth />
+        </form>
+        <div className="flex gap-2 mt-5">
+          <p>Have an account? </p>
+          <Link to="/sign-in">
+            <span className='text-blue-500'>Sign In</span>
+          </Link>
+        </div>
+        {/* <p className="text-red-700 mt-5">{isError && "Something went wrong"}</p> */}
+        <p className="text-red-700 mt-5">{isError && (isError.message || "Something went wrong")}</p>
       </div>
-      {/* <p className="text-red-700 mt-5">{isError && "Something went wrong"}</p> */}
-      <p className="text-red-700 mt-5">{isError && (isError.message || "Something went wrong")}</p>
-      </div>
-      </>
+    </>
   )
 }
