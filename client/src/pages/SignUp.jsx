@@ -52,8 +52,8 @@ export default function SignUp() {
       // setIsLoading(false);
       dispatch(signInSuccess(data));
 
-      // sign up is successfull; redirect to /
-      navigate("/");
+      // sign up is successfull; redirect to /dashboard
+      navigate("/dashboard");
 
     } catch (err) {
       // setIsLoading(false);
@@ -78,7 +78,7 @@ export default function SignUp() {
             placeholder='Username'
             id='username'
             style={{ padding: "3" }}
-            className='bg-input-bg border-border border-2 p-3 rounded-lg'
+            className='bg-input-bg border-border text-text border-2 p-3 rounded-lg'
             onChange={handleChange}
           ></input>
           <input
@@ -86,7 +86,7 @@ export default function SignUp() {
             placeholder='Email'
             id='email'
             style={{ padding: "3" }}
-            className='bg-input-bg border-border border-2 p-3 rounded-lg'
+            className='bg-input-bg border-border text-text border-2 p-3 rounded-lg'
             onChange={handleChange}
           ></input>
           <input
@@ -94,7 +94,7 @@ export default function SignUp() {
             placeholder='Password'
             id='password'
             style={{ padding: "3" }}
-            className='bg-input-bg border-border border-2 p-3 rounded-lg'
+            className='bg-input-bg border-border text-text border-2 p-3 rounded-lg'
             onChange={handleChange}
           ></input>
           <button

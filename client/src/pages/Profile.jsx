@@ -163,9 +163,26 @@ export default function Profile() {
               )
             }
           </p>
-          <input type="text" id="username" placeholder="Username" defaultValue={currentUser.username} onChange={handleChange} className="bg-input-bg rounded-lg p-3"></input>
-          <input type="email" id="email" placeholder="Email" defaultValue={currentUser.email} onChange={handleChange} className="bg-input-bg rounded-lg p-3"></input>
-          <input type="password" id="passwords" placeholder="Password" onChange={handleChange} className="bg-input-bg rounded-lg p-3"></input>
+          <input
+            type="text"
+            id="username"
+            placeholder="Username"
+            defaultValue={currentUser.username}
+            onChange={handleChange}
+            className="bg-input-bg border-border text-text rounded-lg p-3"></input>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            defaultValue={currentUser.email}
+            onChange={handleChange}
+            className="bg-input-bg border-border text-text rounded-lg p-3"></input>
+          <input
+            type="password"
+            id="passwords"
+            placeholder="Password"
+            onChange={handleChange}
+            className="bg-input-bg border-border text-text rounded-lg p-3"></input>
           <button
             className="bg-text text-white p-3 rounded-lg uppercase hover:opacity-75 disabled:opacity-50"
           >

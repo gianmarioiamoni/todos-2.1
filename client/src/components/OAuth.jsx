@@ -16,7 +16,6 @@ export default function OAuth() {
 
     const handleGoogleClick = async () => {
         try {
-            console.log(import.meta.env.VITE_FIREBASE_API_KEY);
             const provider = new GoogleAuthProvider();
             const auth = getAuth(app);
             const result = await signInWithPopup(auth, provider);
@@ -39,8 +38,8 @@ export default function OAuth() {
             
             dispatch(signInSuccess(data));
 
-            // navigate to /
-            navigate("/");
+            // navigate to /dashboard
+            navigate("/dashboard");
 
         } catch (error) {
             console.log("Could not login in with Google", error)

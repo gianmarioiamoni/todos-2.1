@@ -51,8 +51,8 @@ export default function SignIn() {
             // intead of setIsLoading(false) we change the state of redux
             dispatch(signInSuccess(data));
 
-            // user is authenticated; navigate to /
-            navigate("/");
+            // user is authenticated; navigate to /dashboard
+            navigate("/dashboard");
 
         } catch (err) {
             dispatch(signInFailure(err));
@@ -74,7 +74,7 @@ export default function SignIn() {
                         placeholder='Email'
                         id='email'
                         style={{ padding: "3" }}
-                        className='bg-input-bg border-border border-2 p-3 rounded-lg'
+                        className='bg-input-bg border-border text-text border-2 p-3 rounded-lg'
                         onChange={handleChange}
                     ></input>
                     <input
@@ -82,7 +82,7 @@ export default function SignIn() {
                         placeholder='Password'
                         id='password'
                         style={{ padding: "3" }}
-                        className='bg-input-bg border-border border-2 p-3 rounded-lg'
+                        className='bg-input-bg border-border text-text border-2 p-3 rounded-lg'
                         onChange={handleChange}
                     ></input>
                     <button
