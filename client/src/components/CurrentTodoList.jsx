@@ -76,8 +76,10 @@ export function CurrentTodoList({ isListDeleted, setIsListDeleted, handleListUpd
         setCurrentList(allTodosListId);
 
         const lists = await getAllLists(user);
+        console.log("CurrentTodoList() - useEffect([]) - lists = ", lists)
 
         const l = await getAllTodosListItems(user);
+        console.log("CurrentTodoList() - useEffect([]) - l = ", l)
         setIsListEmpty(l == null || l.items.length === 0);
         setData(l);
 

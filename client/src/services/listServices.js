@@ -6,7 +6,7 @@ const serverUrl = "http://localhost:3000";
 
 export async function getAllLists(user) {
     try {
-        const orderedListsArray = await axios.get(serverUrl + '/lists',
+        const orderedListsArray = await axios.get('/server/lists',
             {
                 params: {
                     userId: user._id
@@ -22,7 +22,7 @@ export async function getAllLists(user) {
 export async function updateList(id, name) {
 
     try {
-        const response = axios.put(serverUrl + `/lists/${id}`,
+        const response = axios.put(`/server/lists/${id}`,
             {
                 name: name
             }
@@ -41,7 +41,7 @@ export async function newList(name, icon, userId, isAllTodos=false) {
     // };
     try {
         const payload = { name: name, icon: icon, userId: userId, isAllTodos: isAllTodos};
-        const res = await axios.post(serverUrl + "/lists", payload);
+        const res = await axios.post("/server/lists", payload);
 
         // id field is added to db by the server
         const returnData = { ...res.data, id: res.data._id };
@@ -53,8 +53,8 @@ export async function newList(name, icon, userId, isAllTodos=false) {
 
 export async function deleteList(id) {
     try {
-        const res = await axios.delete(serverUrl + `/lists/${id}`);
-        await axios.delete(serverUrl + `/lists/${id}/listItems`);
+        const res = await axios.delete(`/server/lists/${id}`);
+        await axios.delete(`/server/lists/${id}/listItems`);
 
         return res;
     } catch (err) { console.log(err) }
@@ -62,7 +62,7 @@ export async function deleteList(id) {
 
 export async function getAllTodosListId(user) {
     try {
-        const allTodosList = await axios.get(serverUrl + "/lists/allTodosList",
+        const allTodosList = await axios.get("/server/lists/allTodosList",
             {
                 params: {
                     userId: user._id

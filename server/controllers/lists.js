@@ -2,7 +2,7 @@ import List from "../models/list.js";
 import ListItem from "../models/listItem.js";
 
 
-export async function getLists(req, res) {
+export async function getLists(req, res, next) {
 
     const { userId } = req.query;
 
@@ -49,7 +49,7 @@ export async function getLists(req, res) {
     } catch (err) { console.log(err) }
 }
 
-export async function addList(req, res) {
+export async function addList(req, res, next) {
     const { name, icon, userId } = req.body;
     const savedData = await new List({ name: name, icon: icon, userId: userId }).save()
 
@@ -61,20 +61,20 @@ export async function addList(req, res) {
     res.send(newSavedData);
 }
 
-export async function getAllTodosList(req, res) {
+export async function getAllTodosList(req, res, next) {
     const { userId } = req.query;
     const allTodosList = await List.findOne({ $and: [{ userId: userId }, { isAllTodos: true }] }).exec();
     res.send(allTodosList);
 }
 
-export async function getListById(req, res) {
+export async function getListById(req, res, next) {
     const id = req.params.id;
 
     const data = await List.findOne({ id: id });
     res.send(data);
 }
 
-export async function updateListById(req, res) {
+export async function updateListById(req, res, next) {
     const { name } = req.body;
     const id = req.params.id;
     const response = await List.findByIdAndUpdate((id),

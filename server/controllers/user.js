@@ -55,7 +55,7 @@ export const deleteUser = async (req, res, next) => {
     // the user is authorized to delete his own account
     try {
         await User.findByIdAndDelete(req.params.id);
-        res.status(200).json("User has been successfully deleted")
+        return res.status(200).json("User has been successfully deleted");
 
     } catch (error) {
         next(error);

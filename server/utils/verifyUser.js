@@ -5,7 +5,7 @@ import { errorHandler } from "./error.js";
 export const verifyUser = (req, res, next) => {
     const token = req.cookies.access_token;
 
-    console.log("req.coockies = ", req.coockies);
+    console.log("req.cookies = ", req.cookies);
     console.log("token = ", token);
 
     if (!token) {

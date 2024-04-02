@@ -11,8 +11,8 @@ import authRoutes from "./routes/auth.js";
 // App specific imports
 import cors from "cors";
 
-import listsRoute from "./routes/lists.js"
-import listItemsRoute from "./routes/listItems.js"
+import listsRoutes from "./routes/lists.js"
+import listItemsRoutes from "./routes/listItems.js"
 
 // user authentication logic
 dotenv.config();
@@ -22,7 +22,7 @@ const app = express();
 // allows the application to receive JSON files
 app.use(express.json());
 
-// user to parse the cookie from req.coockies
+// user to parse the cookie from req.cookies
 app.use(cookieParser());
 
 // cors
@@ -61,8 +61,8 @@ app.use("/server/user", userRoutes);
 app.use("/server/auth", authRoutes);
 
 // APP specific logic
-app.use(listsRoute);
-app.use(listItemsRoute);
+app.use("/server/lists", listsRoutes);
+app.use("/server/listItems", listItemsRoutes);
 
 
 
