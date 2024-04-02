@@ -1,3 +1,5 @@
+
+// user authentication imports
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
@@ -6,7 +8,13 @@ import cookieParser from 'cookie-parser';
 import userRoutes from "./routes/user.js";
 import authRoutes from "./routes/auth.js";
 
+// App specific imports
+import cors from "cors";
 
+import listsRoute from "./routes/lists.js"
+import listItemsRoute from "./routes/listItems.js"
+
+// user authentication logic
 dotenv.config();
 
 const app = express();
@@ -17,6 +25,16 @@ app.use(express.json());
 // user to parse the cookie from req.coockies
 app.use(cookieParser());
 
+// cors
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    credentials: true,
+    methods: "GET,POST,PUT,DELETE",
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));  // Use cors middleware
+
 mongoose.connect(process.env.MONGO_DB)
     .then(() => console.log("CONNECTED TO DATABASE"))
     .catch((err) => console.log(err))
@@ -25,9 +43,6 @@ mongoose.connect(process.env.MONGO_DB)
 app.listen(3000, () => {
     console.log("SERVER LISTENING ON PORT 3000");
 });
-
-app.use("/server/user", userRoutes);
-app.use("/server/auth", authRoutes);
 
 // middleware to manage errors
 app.use((err, req, res, next) => {
@@ -41,6 +56,13 @@ app.use((err, req, res, next) => {
         statusCode,
       });
 });
+
+app.use("/server/user", userRoutes);
+app.use("/server/auth", authRoutes);
+
+// APP specific logic
+app.use(listsRoute);
+app.use(listItemsRoute);
 
 
 

@@ -76,7 +76,6 @@ export const google = async (req, res, next) => {
         const user = await User.findOne({ email });
 
         if (user) {
-            // const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
             // the user is authenticated; create a token and put It inside the cookie of the browser
             createCookie(req, res, user);
 

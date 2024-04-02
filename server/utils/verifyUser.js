@@ -5,6 +5,9 @@ import { errorHandler } from "./error.js";
 export const verifyUser = (req, res, next) => {
     const token = req.cookies.access_token;
 
+    console.log("req.coockies = ", req.coockies);
+    console.log("token = ", token);
+
     if (!token) {
         // the user is not validated
         return next(errorHandler(401, "You are not authenticated. Please sign in"));
