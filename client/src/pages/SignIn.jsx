@@ -9,7 +9,7 @@ import { signInStart, signInSuccess, signInFailure } from "../redux/user/userSli
 import OAuth from "../components/OAuth.jsx";
 import Header from "../components/Header.jsx";
 
-const loginImage = "/backgrounds/login-1.jpg"
+const loginImage = "/backgrounds/signin-1.jpg"
 
 
 export default function SignIn() {
@@ -64,9 +64,9 @@ export default function SignIn() {
             {/* Header */}
             <Header isShowHome={true} isShowSignUp={true} />
             <div p-3 className='text-black max-w-lg mx-auto'>
-                <div className="flex flex-col">
+                <div className="flex flex-col mb-6">
                     <h1 className="text-3xl text-center font-semibold my-7">Sign In</h1>
-                    <img className="self-center" src={loginImage} alt="Register Image" style={{ maxWidth: '70%', height: 'auto' }} />
+                    <img className="self-center" src={loginImage} alt="Register Image" style={{ maxWidth: '100%', height: 'auto' }} />
                 </div>
                 <form onSubmit={handleSubmit} className='flex flex-col justify-center gap-4'>
                     <input
