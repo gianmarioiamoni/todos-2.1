@@ -23,12 +23,15 @@ export default function Dashboard() {
     const [isListDeleted, setIsListDeleted] = useState(false);
     const [isListUpdated, setIsListUpdated] = useState(false);
 
+    const [newListId, setNewListId] = useState(null);
+
     function handleListDelete() {
         setIsListDeleted(true);
     }
 
-    function handleListUpdated() {
+    function handleListUpdated(newListId = null) {
         setIsListUpdated(true);
+        setNewListId(newListId);
     }
 
 
@@ -50,6 +53,7 @@ export default function Dashboard() {
                             isListUpdated={isListUpdated}
                             setIsListUpdated={setIsListUpdated}
                             handleListDelete={handleListDelete}
+                            newListId={newListId}
 
                         />
                         <CurrentTodoList

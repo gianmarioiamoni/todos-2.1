@@ -1,6 +1,8 @@
 // user authentication imports
 import { useSelector } from 'react-redux';
 
+import { v4 as uuidv4 } from 'uuid';
+
 import * as Icons from '@mui/icons-material';
 import ClearIcon from '@mui/icons-material/Clear';
 import {
@@ -24,7 +26,7 @@ import { getAllLists, getAllTodosListId, deleteList } from '../services/listServ
 import { themeSelection } from "../common/themes.jsx";
 
 
-export default function AllTodoLists({ handleListDelete, isListUpdated, setIsListUpdated }) {
+export default function AllTodoLists({ handleListDelete, isListUpdated, setIsListUpdated, newListId = null }) {
   const [data, setData] = useState([]); // add loading
 
   const { currentList, setCurrentList } = useAppState();
@@ -69,11 +71,11 @@ export default function AllTodoLists({ handleListDelete, isListUpdated, setIsLis
 
   function handleAllTodosList() {
     getAllLists(user)
-      .then(data => {
+      .then(listsData => {
         // check if "ALL TODOs" list is the first in the list
-        if (data.length > 1 && !data[0]?.isAllTodos) {
+        if (listsData.length > 1 && !listsData[0]?.isAllTodos) {
           // move "ALL TODOs" list at the top of the array
-          const oldListsArray = [...data];
+          const oldListsArray = [...listsData];
           const idx = oldListsArray.findIndex((l) => l.id === allTodosListId);
           const list = { ...oldListsArray[idx] };
 
@@ -90,20 +92,22 @@ export default function AllTodoLists({ handleListDelete, isListUpdated, setIsLis
           }
         } else {
           // "ALL TODOs" list is already at the top
-          setData(data);
+          setData((prev) => [...listsData]);
+
+          console.log("AllTodoLists() - handleAllTodosList() - listsData = ", listsData)
 
           if (!currentList) {
-            setCurrentList(data[0]?.id);
+            setCurrentList(listsData[0]?.id);
           }
 
-          setAllTodosListId(data[0]?.id);
+          setAllTodosListId(listsData[0]?.id);
         }
 
         ///
-        (data[0]?.id);
+        ///(data[0]?.id);
         ///
 
-        return data;
+        return listsData;
       })
       .catch((err) => console.log(err));
   }
@@ -133,11 +137,16 @@ export default function AllTodoLists({ handleListDelete, isListUpdated, setIsLis
       {/* <Toolbar /> */}
       <List>
         {data != null && data.map(({ name, id, icon }) => {
+          console.log(`AllTodoLists() - name = ${name}, id = ${id}, icon = ${icon}`)
           const Icon = Icons[icon];
+          if (id == null && newListId) {
+            id = newListId;
+          }
           if (!isAllTodosList(id)) {
             return (
               <ListItem
-                key={id}
+                // key={id}
+                key={uuidv4()}
                 sx={id === currentList ? (
                   {
                     color: themeSelection.palette.secondary.main,

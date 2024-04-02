@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 
-import { newList } from '../services/listServices.js';
+import { newList } from "../services/listServices.js";
 
 // user authentication imports
 import { useSelector } from 'react-redux';
@@ -107,8 +107,9 @@ export function NewListDialog({ dialogState, handleListUpdated }) {
         <Button onClick={dialogState.close}>Cancel</Button>
         <Button
           onClick={() => {
-            void newList(state, icon, user._id);
-            handleListUpdated();
+            // get new list id from newList()
+            const newListData =  newList(state, icon, user._id);
+            handleListUpdated(newListData._id);
             dialogState.close();
           }}
         >
