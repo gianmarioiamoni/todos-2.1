@@ -63,10 +63,14 @@ export default function Profile() {
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    // console.log("formData = ", formData);
   };
 
   const handleSubmit = async (e) => {
     // prevent the default behaviour that refreshes the page on submit
+
+    console.log("formData = ", formData);
+    console.log("currentUser = ", currentUser);
     e.preventDefault();
 
     try {
@@ -192,7 +196,7 @@ export default function Profile() {
             className="bg-input-bg border-border text-text rounded-lg p-3"></input>
           <input
             type="password"
-            id="passwords"
+            id="password"
             placeholder="Password"
             onChange={handleChange}
             className="bg-input-bg border-border text-text rounded-lg p-3"></input>

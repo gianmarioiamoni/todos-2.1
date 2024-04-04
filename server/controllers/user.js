@@ -19,9 +19,12 @@ export const updateUser = async (req, res, next) => {
 
     // the user is the owner of the profile
     try {
+        console.log("req.body: ", req.body)
         // if there is a new password, we want encrypt it
         if (req.body.password) {
             req.body.password = bcryptjs.hashSync(req.body.password, 10);
+            console.log("req.body.password: ", req.body.password)
+            console.log("bcryptjs.hashSync(req.body.password, 10): ", bcryptjs.hashSync(req.body.password, 10))
         }
 
         // update the user
@@ -34,7 +37,7 @@ export const updateUser = async (req, res, next) => {
             },
             { new: true } // we get back the updated user
         );
-
+        console.log("updatedUser = ", updatedUser)
         // remove the password from the response to be send to the client
         const { password, ...rest } = updatedUser._doc;
 
