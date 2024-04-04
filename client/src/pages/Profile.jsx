@@ -63,14 +63,10 @@ export default function Profile() {
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-    // console.log("formData = ", formData);
   };
 
   const handleSubmit = async (e) => {
     // prevent the default behaviour that refreshes the page on submit
-
-    console.log("formData = ", formData);
-    console.log("currentUser = ", currentUser);
     e.preventDefault();
 
     try {
@@ -86,7 +82,6 @@ export default function Profile() {
       });
 
       const data = await res.json();
-      console.log("Profile() - data = ", data);
 
       if (data.success === false) {
         dispatch(updateUserFailure(data));

@@ -36,13 +36,9 @@ export async function newList(name, icon, userId, isAllTodos = false) {
         const payload = { name, icon, userId, isAllTodos};
         const res = await axios.post("/server/lists", payload);
 
-        console.log("listServices.js - newList() - res = ", res)
-
         // id field is added to db by the server
         const returnData = { ...res.data, id: res.data._id };
 
-        console.log("listServices.js - newList() - returnData = ", returnData)
-        
         return returnData;
 
     } catch (err) { console.log(err) }

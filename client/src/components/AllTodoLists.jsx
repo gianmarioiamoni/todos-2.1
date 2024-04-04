@@ -94,18 +94,12 @@ export default function AllTodoLists({ handleListDelete, isListUpdated, setIsLis
           // "ALL TODOs" list is already at the top
           setData((prev) => [...listsData]);
 
-          console.log("AllTodoLists() - handleAllTodosList() - listsData = ", listsData)
-
           if (!currentList) {
             setCurrentList(listsData[0]?.id);
           }
 
           setAllTodosListId(listsData[0]?.id);
         }
-
-        ///
-        ///(data[0]?.id);
-        ///
 
         return listsData;
       })
@@ -137,7 +131,6 @@ export default function AllTodoLists({ handleListDelete, isListUpdated, setIsLis
       {/* <Toolbar /> */}
       <List>
         {data != null && data.map(({ name, id, icon }) => {
-          console.log(`AllTodoLists() - name = ${name}, id = ${id}, icon = ${icon}`)
           const Icon = Icons[icon];
           if (id == null && newListId) {
             id = newListId;

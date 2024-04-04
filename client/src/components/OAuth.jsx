@@ -32,8 +32,6 @@ export default function OAuth() {
                     photo: result.user.photoURL
                 })
             });
-            // const userData = res.user;
-            // console.log("userData = ", userData);
             const data = await res.json();
             
             dispatch(signInSuccess(data));

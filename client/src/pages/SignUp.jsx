@@ -71,7 +71,7 @@ export default function SignUp() {
     <>
       {/* Header */}
       <Header isShowHome={true} isShowSignIn={true} />
-      <div p-3 className='text-black max-w-lg mx-auto'>
+      <div p-3={+true} className='text-black max-w-lg mx-auto'>
         <div className="flex flex-col mb-6">
           <h1 className="text-3xl text-center font-semibold my-7">Sign Up</h1>
           <img className="self-center" src={registerImage} alt="Register Image" style={{ maxWidth: '100%', height: 'auto' }} />

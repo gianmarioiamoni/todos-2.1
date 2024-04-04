@@ -47,7 +47,6 @@ export default function SignIn() {
 
             if (!data.success) {
                 // error message is inside data
-                console.log("data:", data)
                 dispatch(signInFailure(data));
                 return;
             }
@@ -59,7 +58,6 @@ export default function SignIn() {
             navigate("/dashboard");
 
         } catch (err) {
-            console.log("err:", err)
             // dispatch(signInFailure(err));
             dispatch(signInFailure({success: false, message: "Invalid credentials", error: 401}));
         }
@@ -69,7 +67,7 @@ export default function SignIn() {
         <>
             {/* Header */}
             <Header isShowHome={true} isShowSignUp={true} />
-            <div p-3 className='text-black max-w-lg mx-auto'>
+            <div p-3={+true} className='text-black max-w-lg mx-auto'>
                 <div className="flex flex-col mb-6">
                     <h1 className="text-3xl text-center font-semibold my-7">Sign In</h1>
                     <img className="self-center" src={loginImage} alt="Register Image" style={{ maxWidth: '100%', height: 'auto' }} />
