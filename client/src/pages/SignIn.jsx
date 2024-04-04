@@ -1,10 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import { Link, useNavigate } from "react-router-dom"
 
 import { useDispatch, useSelector } from "react-redux"; // to dispatch action reducer functions
 // redux action creators
-import { signInStart, signInSuccess, signInFailure } from "../redux/user/userSlice.js";
+import { resetState, signInStart, signInSuccess, signInFailure } from "../redux/user/userSlice.js";
 
 import OAuth from "../components/OAuth.jsx";
 import Header from "../components/Header.jsx";
@@ -20,6 +20,10 @@ export default function SignIn() {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(resetState());
+    }, []);
 
     const handleChange = (e) => {
         setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -43,7 +47,7 @@ export default function SignIn() {
 
             if (!data.success) {
                 // error message is inside data
-                // intead of setIsError(true)
+                console.log("data:", data)
                 dispatch(signInFailure(data));
                 return;
             }
@@ -55,7 +59,9 @@ export default function SignIn() {
             navigate("/dashboard");
 
         } catch (err) {
-            dispatch(signInFailure(err));
+            console.log("err:", err)
+            // dispatch(signInFailure(err));
+            dispatch(signInFailure({success: false, message: "Invalid credentials", error: 401}));
         }
     };
 

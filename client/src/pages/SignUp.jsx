@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux"; // to dispatch action reducer functions
 
-import { signInStart, signInSuccess, signInFailure } from "../redux/user/userSlice.js";
+import { resetState, signInStart, signInSuccess, signInFailure } from "../redux/user/userSlice.js";
 
 import OAuth from "../components/OAuth";
 import Header from "../components/Header.jsx";
@@ -20,6 +20,10 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(resetState());
+  }, []);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));

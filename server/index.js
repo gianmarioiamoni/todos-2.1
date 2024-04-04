@@ -48,11 +48,11 @@ app.listen(3000, () => {
 app.use((err, req, res, next) => {
     // 500 is internal server error
     const statusCode = err.statusCode || 500;
-    const errMessage = err.message || "Internal server error";
+    const message = err.message || "Internal server error";
 
     return res.status(statusCode).json({
         success: false,
-        message: errMessage,
+        message,
         statusCode,
       });
 });

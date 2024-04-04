@@ -51,15 +51,12 @@ export const signin = async (req, res, next) => {
     const { email, password } = req.body;
     try {
         const validUser = await User.findOne({ email: email });
-        console.log("validUser = ", validUser)
 
         if (!validUser) {
             return next(errorHandler(401, "Invalid credentials"));
         }
 
         const validPassword = bcryptjs.compareSync(password, validUser.password);
-        console.log("bcryptjs.hashSync(password, 10): ", bcryptjs.hashSync(password, 10))
-        console.log(`password: ${password}, validUser.password: ${validUser.password}`)
 
         if (!validPassword) {
             return next(errorHandler(401, "Invalid credentials"));

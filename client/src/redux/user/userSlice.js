@@ -10,12 +10,18 @@ export const userSlice = createSlice({
     name: 'user', // identification name of the slice
     initialState,
     reducers: { // functions to change the state 
+        resetState: (state) => {
+            state.currentUser = null;
+            state.isLoading = false;
+            state.isError = false; 
+        },
         signInStart: (state) => {
             // Redux Toolkit allows us to write "mutating" logic in reducers. It
             // doesn't actually mutate the state because it uses the Immer library,
             // which detects changes to a "draft state" and produces a brand new
             // immutable state based off those changes
             state.isLoading = true;
+            state.isError = false;
         },
         // fetched data can be added to reducer as "action" as action-payload
         signInSuccess: (state, action) => {
@@ -29,6 +35,7 @@ export const userSlice = createSlice({
         },
         updateUserStart: (state) => {
             state.isLoading = true;
+            state.isError = false;
         },
         updateUserSuccess: (state, action) => {
             state.currentUser = action.payload;
@@ -61,6 +68,7 @@ export const userSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
+    resetState,
     signInStart, signInSuccess, signInFailure,
     updateUserStart, updateUserSuccess, updateUserFailure,
     deleteUserStart, deleteUserSuccess, deleteUserFailure,
