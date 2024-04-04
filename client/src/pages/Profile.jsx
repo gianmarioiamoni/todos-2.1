@@ -14,6 +14,7 @@ import {
   signOut
 } from "../redux/user/userSlice";
 import Header from '../components/Header';
+import { getAllLists, deleteList } from "../services/listServices";
 
 
 export default function Profile() {
@@ -99,8 +100,19 @@ export default function Profile() {
 
   const handleDeleteAccount = async () => {
 
+    dispatch(deleteUserStart());
+    
     try {
-      dispatch(deleteUserStart());
+      const userLists = await getAllLists(currentUser);
+      
+      const delList = async (id) => {
+        try {
+          await deleteList(id);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      userLists.map((list) => (delList(list._id)));
 
       const res = await fetch(`/server/user/delete/${currentUser._id}`, {
         method: 'DELETE',

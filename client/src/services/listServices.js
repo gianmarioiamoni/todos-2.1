@@ -32,13 +32,6 @@ export async function updateList(id, name) {
 }
 
 export async function newList(name, icon, userId, isAllTodos = false) {
-    // const newListData = {
-    //     name: name,
-    //     icon: icon,
-    //     userId,
-    //     id: crypto.randomUUID(),
-
-    // };
     try {
         const payload = { name, icon, userId, isAllTodos};
         const res = await axios.post("/server/lists", payload);
