@@ -18,7 +18,7 @@ export default function About() {
 
           It includes also a new user profile management feature, which allows the user to manage profile picture loading and updating, username, email and password change.<br />
 
-          Finally, a new improved navigation bar hasbeen added.<br />
+          Finally, a new improved navigation bar has been added.<br />
         </p>
         <p className="mb-4 text-text">
           Todos 2.0 is a Web application based on MERN stack that allows the creation of customized todo lists.<br /><br />
