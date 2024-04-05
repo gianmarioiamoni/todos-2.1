@@ -166,9 +166,14 @@ export function CurrentTodoList({ isListDeleted, setIsListDeleted, handleListUpd
         const itemsArray = [...data.items];
         if (itemsArray != null) {
           const newItemsArray = [...itemsArray, newTodo];
-          setData((prev) => ({ ...prev, items: newItemsArray.sort((a, b) => sortItems(a, b, sortSelection)) }))
+          setData((prev) => ({ ...prev, items: newItemsArray.sort((a, b) => sortItems(a, b, sortSelection)) }));
         }
-        setIsEdit(prev => [...prev, { id: item.id, priotiyEdit: false, dateEdit: false }])
+        setIsEdit(prev => [...prev, { id: item.id, priotiyEdit: false, dateEdit: false }]);
+
+        // update "The selected list has no items" text 
+        setIsListEmpty(false);
+
+        // reset add new item data
         setNewItemText('');
         setNewItemPriority(3);
         setSelectedDate(dayjs(new Date()))
@@ -183,6 +188,7 @@ export function CurrentTodoList({ isListDeleted, setIsListDeleted, handleListUpd
     setData(prev => ({ ...prev, items: newItems }));
     const newIsEdit = isEdit.filter(i => i.id !== id);
     setIsEdit(newIsEdit);
+    
     return deleteItem(id);
   }
 
@@ -191,6 +197,7 @@ export function CurrentTodoList({ isListDeleted, setIsListDeleted, handleListUpd
     const itemsArray = [...data.items];
     itemsArray[idx].checked = !itemsArray[idx].checked;
     setData(prev => ({ ...prev, items: itemsArray }));
+    
     return await toggleChecked(id, itemsArray[idx].checked);
   }
 
@@ -208,8 +215,8 @@ export function CurrentTodoList({ isListDeleted, setIsListDeleted, handleListUpd
     // params: id, name, priority, date
     const updatedItem = await updateItem(id, event.target.value, null, null);
     const returnItem = handleUpdateItem(updatedItem, null);
+  
     return returnItem;
-
   }
 
 
@@ -308,6 +315,7 @@ export function CurrentTodoList({ isListDeleted, setIsListDeleted, handleListUpd
       }
     }
   }
+
 
   return (
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
