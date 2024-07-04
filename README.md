@@ -1,8 +1,22 @@
 # todos-2.1
-Todos 2.1 is the new version of Todos 2.0 project.
+Todos 2.1 is the new version of Todos project.
+It is a Web application based on MERN stack that allows the creation of customized todo lists.
 
 ![Screenshot 2024-04-05 alle 17 13 23](https://github.com/gianmarioiamoni/todos-2.1/assets/113024091/debdc63e-a642-4780-ad45-9b824162cc0d)
 
+The backbone of the project is baed on an idea of Colt Steele, from "The Web Developer Bootcamp 2024" course, available on Udemy.
+The main new features and improvements I added are the following:
+- migration to MongoDB database
+- new theme
+- new Homepage with responsive Appbar
+- authentication with local username/password and Google Id
+- new navigation bar
+- authorization
+- ALL TODOs list available for each user
+- added Priority and expring date to todos and editing functionalities
+- todos sorting and filtering capabilities
+- list deleting
+  
 ## New Authentication Framework
 The new release includes a new authentication interface and logic that allow user to sign up, login and logout and provides access to protected routes only for authenticated users.
 
@@ -44,44 +58,9 @@ User Sign Out and User Delete links have also been included in the User Profile 
 
 
 ## New Navigation Bar
-Finally, a new improved navigation bar has been added; It is available in every page of the application and the proposed commands are context-based.
+A new improved navigation bar has been added; It is available in every page of the application and the proposed commands are context-based.
 
 ![Screenshot 2024-04-05 alle 17 37 11](https://github.com/gianmarioiamoni/todos-2.1/assets/113024091/b3f43881-9f76-4b1b-90e6-8071bc1ebbe8)
-
-
-# Previous version: Todos 2.0
-Todos 2.0 is a Web application based on MERN stack that allows the creation of customized todo lists.
-
-The backbone of the project is baed on an idea of Colt Steele, from "The Web Developer Bootcamp 2024" course, available on Udemy.
-The main new features and improvements I added are the following:
-- migration to MongoDB database
-- new theme
-- new Homepage with responsive Appbar
-- authentication with local username/password and Google Id
-- authorization
-- ALL TODOs list available for each user
-- added Priority and expring date to todos and editing functionalities
-- todos sorting and filtering capabilities
-- list deleting
-
-
-## New Theme and Homepage
-
-![image](https://github.com/gianmarioiamoni/todos-2.0/assets/113024091/117b6a19-1fc2-4419-84b0-90dc7e62ecbf)
-
-The Homepage of the application allows an easy access to login and register sections
-
-
-## Authentication
-
-![Screenshot 2024-03-20 alle 12 42 28](https://github.com/gianmarioiamoni/todos-2.0/assets/113024091/f34b5bfa-f207-4383-b4f3-df565324b857)
-
-![Screenshot 2024-03-20 alle 12 48 45](https://github.com/gianmarioiamoni/todos-2.0/assets/113024091/36026d8c-3ec3-42d9-82c7-d024cdde6234)
-
-![Screenshot 2024-03-20 alle 16 57 41](https://github.com/gianmarioiamoni/todos-2.0/assets/113024091/68b0a964-bf92-4da6-9e0e-df943044fc45)
-
-
-User authentication can be done either by registering with username and password or by using Google account
 
 
 ## ALL TODOs list, Priority and Expiring Date, creation functionalities
